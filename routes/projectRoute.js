@@ -84,17 +84,11 @@ router.delete('/:id', async (req, res) => {
 	try {
 		const deleteProject = await project.remove(id);
 		if (deleteProject === 1) {
-			res.status(404).json({ message: 'project was deleted' });
-		} else {
+			res.status(200).json({ message: 'project was deleted' });
+		}
+		{
 			res.status(500).json({ message: 'was not a success' });
 		}
-		//  try {
-		// const deleteAction = await Action.remove(id)
-		// res.status(404).json({message: 'Action was deleted!'})
-
-		// } catch {
-		// res.status(500).json({error: 'Server issue '})
-		// }
 	} catch (error) {
 		res.status(500).json({ error: 'Server issue ' });
 	}
